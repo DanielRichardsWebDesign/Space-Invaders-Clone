@@ -26,6 +26,7 @@ public:
 
 	//Public Functions
 	void updateInput();
+	void updateWindowBoundsCollision(sf::RenderTarget* target);
 	void update(sf::RenderTarget* target);
 
 

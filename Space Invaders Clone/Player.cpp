@@ -6,7 +6,7 @@
 
 void Player::initVariables()
 {
-	this->moveSpeed = 3.f;
+	this->moveSpeed = 5.f;
 	this->lives = 5;
 }
 
@@ -52,10 +52,23 @@ void Player::updateInput()
 	}
 }
 
+void Player::updateWindowBoundsCollision(sf::RenderTarget* target)
+{
+	//Left Boundary Collision	
+	if (this->shape.getGlobalBounds().left <= 0.f)
+		this->shape.setPosition(0.f, this->shape.getGlobalBounds().top);
+	//Right Boundary Collision
+	if (this->shape.getGlobalBounds().left + this->shape.getGlobalBounds().width >= target->getSize().x)
+		this->shape.setPosition(target->getSize().x - this->shape.getGlobalBounds().width, this->shape.getGlobalBounds().top);
+}
+
 void Player::update(sf::RenderTarget* target)
 {
 	//Update Input
 	this->updateInput();
+
+	//Window Boundaries - Collision
+	this->updateWindowBoundsCollision(target);
 }
 
 void Player::render(sf::RenderTarget* target)
