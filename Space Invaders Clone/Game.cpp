@@ -33,7 +33,7 @@ Game::Game()
 //Deconstructor
 Game::~Game()
 {
-
+	delete this->window;
 }
 
 
@@ -64,15 +64,27 @@ void Game::pollEvents()
 	}
 }
 
+//Update player on screen
+void Game::updatePlayer()
+{
+	this->player.update(this->window);
+}
+
 void Game::update()
 {
 	this->pollEvents();
+
+	//Update Player
+	this->updatePlayer();
 }
 
 void Game::render()
 {
 	//Clear window first before rendering
 	this->window->clear();
+
+	//Render Game Objects
+	this->player.render(this->window);
 
 	this->window->display();
 }

@@ -1,10 +1,7 @@
 #pragma once
 
-#include "SFML/Graphics.hpp"
-#include "SFML/System.hpp"
-#include "SFML/Window.hpp"
-#include "SFML/Audio.hpp"
-#include "SFML/Network.hpp"
+//Include game related classes
+#include "Player.h"
 
 class Game
 {
@@ -13,6 +10,14 @@ private:
 	sf::VideoMode videoMode;
 	sf::RenderWindow* window;
 	sf::Event sfmlEvent;
+
+	//Points
+	int points;
+	sf::Font font;
+	sf::Text pointsText;
+
+	//Player Object
+	Player player;
 
 	//Private Functions
 	void initVariables();
@@ -29,8 +34,9 @@ public:
 	//Public Functions
 	const bool running() const;
 	void pollEvents();
-
+	void updatePlayer();
 	void update();
+
 	void render();
 };
 
