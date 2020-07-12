@@ -16,6 +16,7 @@ void Game::initWindow()
 	this->videoMode = sf::VideoMode(800, 600);
 	this->window = new sf::RenderWindow(this->videoMode, "Space Invaders", sf::Style::Close | sf::Style::Titlebar);
 	this->window->setFramerateLimit(60);
+	this->window->setVerticalSyncEnabled(false);
 }
 
 
